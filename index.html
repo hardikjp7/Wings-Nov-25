@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS Wings Study Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .countdown {
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .progress-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .day-card {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .day-card.completed {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .day-card.current {
+            background: #fff3cd;
+            border-color: #ffc107;
+            box-shadow: 0 4px 12px rgba(255,193,7,0.3);
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .day-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .task-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .task-time {
+            color: #666;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 100px;
+        }
+        
+        .task-desc {
+            flex: 1;
+        }
+        
+        .complete-day-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .complete-day-btn:hover {
+            background: #218838;
+        }
+        
+        .complete-day-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .phase-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .tips {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tips strong {
+            color: #1976D2;
+        }
+        
+        .export-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .export-btn:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 TCS Wings Exam Study Tracker</h1>
+            <div class="countdown" id="countdown">Days Until Exam: 16</div>
+        </div>
+        
+        <div class="content">
+            <div class="progress-section">
+                <h2>Overall Progress</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">0%</div>
+                </div>
+                <p style="margin-top: 10px; color: #666;">
+                    <span id="completedDays">0</span> of 16 days completed
+                </p>
+            </div>
+            
+            <div class="tips">
+                <strong>📱 Fight Distractions:</strong> Use Pomodoro (25min study + 5min break). Keep phone in another room. Use website blockers if needed!
+            </div>
+            
+            <div id="studyPlan"></div>
+            
+            <button class="export-btn" onclick="exportProgress()">📥 Export Progress to Text</button>
+        </div>
+    </div>
+
+    <script>
+        const studyPlan = [
+            {
+                phase: "Phase 1: Setup & Assessment",
+                days: [
+                    {
+                        day: 1,
+                        date: "Oct 30 (Th)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Gather all study materials - Articulation, Bizz Skill Track 2, Tableau, Informatica PDFs/videos" },
+                            { time: "Afternoon (2hrs)", desc: "Organize materials in folders. Create study environment (clean desk, remove distractions)" },
+                            { time: "Evening (1hr)", desc: "Quick scan of Tableau basics - just get familiar with interface and terminology" }
+                        ]
+                    },
+                    {
+                        day: 2,
+                        date: "Oct 31 (Fr)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Scan through Informatica basics - understand what ETL is, key concepts" },
+                            { time: "Afternoon (1.5hrs)", desc: "Review Articulation syllabus - note down topics and format" },
+                            { time: "Evening (1.5hrs)", desc: "Go through Bizz Skill Track 2 overview - understand personality skill areas covered" }
+                        ]
+                    }
+                ]
+            },
+            {
+                phase: "Phase 2: Core Learning",
+                days: [
+                    {
+                        day: 3,
+                        date: "Nov 1 (Sa)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Tableau Theory: Data connections, worksheets, basic charts (bar, line, pie)" },
+                            { time: "Afternoon (2hrs)", desc: "Tableau Hands-on: Create 3 basic visualizations with sample data" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Practice introduction & topic selection | Bizz Skills (1hr): Read personality development module" }
+                        ]
+                    },
+                    {
+                        day: 4,
+                        date: "Nov 2 (Su)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Informatica Theory: Architecture, mappings, sessions, workflows" },
+                            { time: "Afternoon (2hrs)", desc: "Informatica Hands-on: Practice creating simple mapping and workflow" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Practice speaking on 2 random topics | Bizz Skills (1hr): Self-awareness modules" }
+                        ]
+                    },
+                    {
+                        day: 5,
+                        date: "Nov 3 (Mo)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Tableau Theory: Filters, groups, sets, parameters, calculated fields" },
+                            { time: "Afternoon (2hrs)", desc: "Tableau Hands-on: Create dashboard with filters and calculated fields" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Record yourself presenting | Bizz Skills (1hr): Communication skills content" }
+                        ]
+                    },
+                    {
+                        day: 6,
+                        date: "Nov 4 (Tu)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Informatica Theory: Transformations (source qualifier, expression, filter, aggregator)" },
+                            { time: "Afternoon (2hrs)", desc: "Informatica Hands-on: Practice transformations in mappings" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Time management in speaking | Bizz Skills (1hr): Emotional intelligence" }
+                        ]
+                    },
+                    {
+                        day: 7,
+                        date: "Nov 5 (We)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Tableau Theory: Table calculations, LOD expressions, dashboards & stories" },
+                            { time: "Afternoon (2hrs)", desc: "Tableau Hands-on: Build complete dashboard with multiple sheets and interactivity" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Q&A handling practice | Bizz Skills (1hr): Problem-solving & decision making" }
+                        ]
+                    },
+                    {
+                        day: 8,
+                        date: "Nov 6 (Th)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Informatica Theory: Joiner, lookup, router, update strategy transformations" },
+                            { time: "Afternoon (2hrs)", desc: "Informatica Hands-on: Create complex mapping with multiple transformations" },
+                            { time: "Evening (2hrs)", desc: "Articulation (1hr): Mock presentation | Bizz Skills (1hr): Review all modules done so far" }
+                        ]
+                    }
+                ]
+            },
+            {
+                phase: "Phase 3: Practice & Weak Areas",
+                days: [
+                    {
+                        day: 9,
+                        date: "Nov 7 (Fr)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Tableau MCQs: Practice 50+ questions, note weak areas" },
+                            { time: "Afternoon (2hrs)", desc: "Tableau Hands-on: Work on scenarios similar to exam pattern" },
+                            { time: "Evening (2hrs)", desc: "Review wrong MCQs & strengthen weak Tableau concepts" }
+                        ]
+                    },
+                    {
+                        day: 10,
+                        date: "Nov 8 (Sa)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Informatica MCQs: Practice 50+ questions, identify gaps" },
+                            { time: "Afternoon (2hrs)", desc: "Informatica Hands-on: Exam-style scenarios and troubleshooting" },
+                            { time: "Evening (2hrs)", desc: "Review wrong MCQs & practice weak Informatica topics" }
+                        ]
+                    },
+                    {
+                        day: 11,
+                        date: "Nov 9 (Su)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Mixed MCQs: Both Tableau & Informatica (timed)" },
+                            { time: "Afternoon (2hrs)", desc: "Hands-on practice: Pick random scenarios for both tools" },
+                            { time: "Evening (2hrs)", desc: "Articulation full mock + Bizz Skills revision" }
+                        ]
+                    },
+                    {
+                        day: 12,
+                        date: "Nov 10 (Mo)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Focus on YOUR weakest topic from Tableau/Informatica" },
+                            { time: "Afternoon (2hrs)", desc: "Hands-on only weak areas - build confidence" },
+                            { time: "Evening (2hrs)", desc: "Create summary notes/cheat sheet for quick revision" }
+                        ]
+                    }
+                ]
+            },
+            {
+                phase: "Phase 4: Mock Tests & Revision",
+                days: [
+                    {
+                        day: 13,
+                        date: "Nov 11 (Tu)",
+                        tasks: [
+                            { time: "Morning (2.5hrs)", desc: "Full Tableau Mock Exam (MCQ + Hands-on simulation)" },
+                            { time: "Afternoon (2.5hrs)", desc: "Full Informatica Mock Exam (MCQ + Hands-on simulation)" },
+                            { time: "Evening (1hr)", desc: "Analyze mistakes deeply - understand WHY you got them wrong" }
+                        ]
+                    },
+                    {
+                        day: 14,
+                        date: "Nov 12 (We)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Articulation final mock presentation + self-evaluation" },
+                            { time: "Afternoon (2hrs)", desc: "Bizz Skills: Go through all important concepts one last time" },
+                            { time: "Evening (2hrs)", desc: "Quick revision: Skim through all notes, focus on formulas/shortcuts" }
+                        ]
+                    },
+                    {
+                        day: 15,
+                        date: "Nov 13 (Th)",
+                        tasks: [
+                            { time: "Morning (2hrs)", desc: "Tech Stack MCQs only - speed practice (aim for accuracy + speed)" },
+                            { time: "Afternoon (2hrs)", desc: "Hands-on practice: One Tableau + One Informatica quick project" },
+                            { time: "Evening (1.5hrs)", desc: "Review your cheat sheet, important formulas, common mistakes" }
+                        ]
+                    },
+                    {
+                        day: 16,
+                        date: "Nov 14 (Fr)",
+                        tasks: [
+                            { time: "Morning (1hr)", desc: "Light revision - only your summary notes, no new topics" },
+                            { time: "Afternoon", desc: "RELAX - Watch something light, take a walk, stay calm" },
+                            { time: "Evening", desc: "Sleep EARLY - at least 8 hours before exam. Keep materials ready for tomorrow." }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        let completedTasks = {};
+        let completedDays = new Set();
+
+        function loadProgress() {
+            const saved = localStorage.getItem('tcsWingsProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                completedTasks = data.tasks || {};
+                completedDays = new Set(data.days || []);
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem('tcsWingsProgress', JSON.stringify({
+                tasks: completedTasks,
+                days: Array.from(completedDays)
+            }));
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const totalDays = 16;
+            const completed = completedDays.size;
+            const percentage = Math.round((completed / totalDays) * 100);
+            
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressFill').textContent = percentage + '%';
+            document.getElementById('completedDays').textContent = completed;
+        }
+
+        function renderPlan() {
+            const container = document.getElementById('studyPlan');
+            const today = new Date();
+            const examDate = new Date('2025-11-15');
+            const daysUntil = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown').textContent = `Days Until Exam: ${daysUntil}`;
+            
+            studyPlan.forEach(phase => {
+                const phaseTitle = document.createElement('div');
+                phaseTitle.className = 'phase-title';
+                phaseTitle.textContent = phase.phase;
+                container.appendChild(phaseTitle);
+                
+                phase.days.forEach(dayData => {
+                    const dayCard = document.createElement('div');
+                    dayCard.className = 'day-card';
+                    
+                    if (completedDays.has(dayData.day)) {
+                        dayCard.classList.add('completed');
+                    } else if (dayData.day === daysUntil || (daysUntil > 16 && dayData.day === 1)) {
+                        dayCard.classList.add('current');
+                    }
+                    
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'day-header';
+                    dayHeader.innerHTML = `
+                        <div class="day-title">Day ${dayData.day} - ${dayData.date}</div>
+                        <button class="complete-day-btn" onclick="completeDay(${dayData.day})" ${completedDays.has(dayData.day) ? 'disabled' : ''}>
+                            ${completedDays.has(dayData.day) ? '✓ Completed' : 'Mark Day Complete'}
+                        </button>
+                    `;
+                    
+                    const taskList = document.createElement('ul');
+                    taskList.className = 'task-list';
+                    
+                    dayData.tasks.forEach((task, idx) => {
+                        const taskId = `${dayData.day}-${idx}`;
+                        const taskItem = document.createElement('li');
+                        taskItem.className = 'task-item';
+                        taskItem.innerHTML = `
+                            <input type="checkbox" id="task-${taskId}" ${completedTasks[taskId] ? 'checked' : ''} onchange="toggleTask('${taskId}')">
+                            <span class="task-time">${task.time}</span>
+                            <span class="task-desc">${task.desc}</span>
+                        `;
+                        taskList.appendChild(taskItem);
+                    });
+                    
+                    dayCard.appendChild(dayHeader);
+                    dayCard.appendChild(taskList);
+                    container.appendChild(dayCard);
+                });
+            });
+        }
+
+        function toggleTask(taskId) {
+            completedTasks[taskId] = !completedTasks[taskId];
+            saveProgress();
+        }
+
+        function completeDay(day) {
+            completedDays.add(day);
+            saveProgress();
+            location.reload();
+        }
+
+        function exportProgress() {
+            let text = "TCS Wings Exam - Study Progress Report\n";
+            text += "==========================================\n\n";
+            text += `Progress: ${completedDays.size}/16 days completed\n\n`;
+            
+            studyPlan.forEach(phase => {
+                text += `\n${phase.phase}\n`;
+                text += "-".repeat(phase.phase.length) + "\n";
+                phase.days.forEach(dayData => {
+                    text += `\nDay ${dayData.day} - ${dayData.date} ${completedDays.has(dayData.day) ? '[COMPLETED]' : '[PENDING]'}\n`;
+                    dayData.tasks.forEach((task, idx) => {
+                        const taskId = `${dayData.day}-${idx}`;
+                        text += `  ${completedTasks[taskId] ? '☑' : '☐'} ${task.time}: ${task.desc}\n`;
+                    });
+                });
+            });
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'TCS_Wings_Study_Progress.txt';
+            a.click();
+        }
+
+        loadProgress();
+        renderPlan();
+        updateProgress();
+    </script>
+</body>
+</html>
