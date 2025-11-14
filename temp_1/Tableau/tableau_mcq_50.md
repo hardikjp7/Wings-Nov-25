@@ -549,4 +549,227 @@ This provides the cleanest, most maintainable solution and gives the NPS as a pe
 **Scenario:** Zoe wants to create a dashboard where clicking a metric tile (like "Total Sales") drills into a detailed breakdown, but without navigating to a different dashboard. How should she implement this?
 
 **Options:**
-1. Use URL Actions
+1. Use URL Actions to external dashboards
+2. Use Sheet Swapping with Show/Hide containers and Dashboard Actions
+3. Use Tooltips with embedded visualizations
+4. Create hierarchies and enable drill-down
+
+**Answer:** Option 2 - Use Sheet Swapping with Show/Hide containers and Dashboard Actions
+
+**Explanation:** Zoe should place both the summary tiles and detailed breakdown sheets in the same dashboard using layout containers. Initially hide the detail sheet. Create a Dashboard Action triggered by clicking the tile that uses a Parameter or filter to control container visibility. When the tile is clicked, it switches which container is visible, giving the appearance of drilling down without navigation. A "back" button can reverse the action.
+
+---
+
+## Question 38
+**Scenario:** Lucas has customer segmentation data (Premium, Standard, Basic) and wants to create a watermark on his dashboard showing which segment is currently selected by a filter. The watermark should be large, semi-transparent text behind all visualizations. How can he achieve this?
+
+**Options:**
+1. Use a text object with Parameter-driven content
+2. Create a worksheet with the segment name as text, make it transparent, and float it
+3. Add the segment name in the dashboard title
+4. Use custom images for each segment
+
+**Answer:** Option 2 - Create a worksheet with the segment name as text, make it transparent, and float it
+
+**Explanation:** Lucas should create a worksheet using the Segment field as Text on the Text shelf, make the font very large, adjust the transparency in the Format pane, remove all borders and backgrounds, then float this sheet on the dashboard positioned behind other sheets. By connecting it to the same filter, it will dynamically update to show the selected segment as a watermark.
+
+---
+
+## Question 39
+**Scenario:** Maya is analyzing e-commerce data and wants to identify products that are frequently bought together. She has transaction IDs and product names. What analysis approach should she use?
+
+**Options:**
+1. Create a cross-tab with products on both dimensions
+2. Use market basket analysis with calculated fields
+3. Create a heat map of product correlations
+4. Export data and use external tools, as Tableau cannot do this natively
+
+**Answer:** Option 2 - Use market basket analysis with calculated fields
+
+**Explanation:** Maya can implement basic market basket analysis in Tableau by creating a self-blend or join on Transaction ID. Create calculated fields to identify when different products appear in the same transaction: IF [Product A] != [Product B] AND [Transaction ID].[Transaction ID (Products A)] = [Transaction ID].[Transaction ID (Products B)] THEN 1 ELSE 0 END. Sum this to count co-occurrences. While external tools (Python, R) offer more sophisticated algorithms, basic association analysis is possible in Tableau.
+
+---
+
+## Question 40
+**Scenario:** Ethan has a dataset with timestamps down to the second, and he wants to create bins that group times into 15-minute intervals throughout the day. How should he approach this?
+
+**Options:**
+1. Use DATEPART('minute') and create bins
+2. Create a calculated field: DATETRUNC('minute', [Timestamp]) and then create 15-minute bins
+3. Use DATEADD to round to nearest 15 minutes
+4. Create calculated field: DATETIME(DATEPART('hour', [Timestamp])) + ":" + FLOOR(DATEPART('minute', [Timestamp])/15)*15
+
+**Answer:** Option 2 - Create a calculated field: DATETRUNC('minute', [Timestamp]) and then create 15-minute bins
+
+**Explanation:** Ethan should first truncate timestamps to minute level using DATETRUNC('minute', [Timestamp]), which removes seconds. Then create a calculated field that rounds to 15-minute intervals: DATEADD('minute', INT(DATEPART('minute', DATETRUNC('minute', [Timestamp]))/15)*15, DATETRUNC('hour', [Timestamp])). Alternatively, he can use bins on the minute-truncated field with size 15, though this requires the field to be numeric.
+
+---
+
+## Question 41
+**Scenario:** Ava is building a dashboard showing revenue by salesperson. Her manager wants to see only salespeople who have achieved at least 80% of their target, but this threshold should be adjustable. How should she implement this?
+
+**Options:**
+1. Create a filter on the calculated field [Revenue]/[Target] >= 0.8
+2. Create a Parameter for threshold and use it in a calculated filter
+3. Use a Top N filter based on percentage of target
+4. Create a Set of salespeople meeting the criteria
+
+**Answer:** Option 2 - Create a Parameter for threshold and use it in a calculated filter
+
+**Explanation:** Ava should create a Parameter (e.g., "Achievement Threshold") with data type Float and default value 0.8. Then create a calculated field: [Revenue]/[Target] >= [Achievement Threshold]. Use this calculated field as a filter, showing only TRUE values. This allows users to adjust the threshold dynamically using a Parameter control on the dashboard without requiring republishing or modifying the workbook.
+
+---
+
+## Question 42
+**Scenario:** Jackson has survey data with Likert scale responses (Strongly Disagree to Strongly Agree). He wants to show the distribution but maintain the logical order of responses. However, Tableau sorts them alphabetically. What should he do?
+
+**Options:**
+1. Rename the responses with numbers prefix (1-Strongly Disagree, etc.)
+2. Create a calculated field with CASE to assign numeric values, then sort by that field
+3. Use a Sort dialog and manually reorder the responses
+4. Use aliases to change display order
+
+**Answer:** Option 3 - Use the Sort dialog and manually reorder the responses
+
+**Explanation:** Jackson should drag the Response field to Rows or Columns, click the sort icon (or right-click and select Sort), choose "Manual" sort, and drag the responses into the correct logical order. This preserves the text labels while controlling the display sequence. While option 2 works, option 3 is simpler and doesn't require additional calculated fields. The manual sort is saved with the workbook.
+
+---
+
+## Question 43
+**Scenario:** Sophia's dashboard has multiple date filters (Order Date, Ship Date, Delivery Date). Users are confused about which dates they're filtering. How can she make the dashboard more user-friendly?
+
+**Options:**
+1. Combine all dates into a single filter
+2. Use custom titles for each filter clearly labeling what they filter
+3. Create Parameters instead of filters
+4. Color-code each filter and matching visualizations
+
+**Answer:** Option 4 - Color-code each filter and matching visualizations
+
+**Explanation:** While option 2 is good practice, option 4 provides the most comprehensive solution. Sophia should: (1) Use custom titles for filters clearly stating their purpose, (2) Color-code the filter containers (e.g., Order Date filter in blue), (3) Add matching colored borders or title backgrounds to sheets filtered by each date, and (4) Optionally add instructional text. This visual system helps users understand which filters affect which charts.
+
+---
+
+## Question 44
+**Scenario:** Henry has calculated the year-over-year growth percentage using table calculations. Now he wants to add a reference line showing the average growth rate, but the option is grayed out. Why?
+
+**Options:**
+1. Reference lines cannot be added to table calculations
+2. The view needs to be aggregated differently
+3. He needs to convert the table calculation to a LOD expression
+4. Reference lines require measures, not calculations
+
+**Answer:** Option 1 - Reference lines cannot be added to table calculations
+
+**Explanation:** Reference lines in Tableau work with aggregated measures at the data source level, not with table calculations (which compute after aggregation). Henry has two options: (1) Create a separate calculated field computing the average of his table calculation using WINDOW_AVG, then display it as an annotation, or (2) Convert his growth calculation to a LOD expression, which allows reference lines: {FIXED DATEPART('year', [Date]) : SUM([Sales])}, then calculate year-over-year change.
+
+---
+
+## Question 45
+**Scenario:** Lily has a dataset with geographic coordinates (Latitude, Longitude) but no country or state fields. She wants to reverse geocode these coordinates to get country names for filtering. What's the best approach?
+
+**Options:**
+1. Use Tableau's spatial functions to match coordinates to geographic boundaries
+2. Create a spatial join with a built-in geographic file
+3. Use Tableau Prep with spatial joins to add country data
+4. Manually create calculated fields for coordinate ranges
+
+**Answer:** Option 3 - Use Tableau Prep with spatial joins to add country data
+
+**Explanation:** Lily should use Tableau Prep to perform a spatial join. Import her coordinate data and a spatial file containing country boundaries (available from various sources or Tableau's sample data). Use the Spatial Join feature to match her points to the containing polygons (countries), which adds country names to her dataset. This enriched data can then be used in Tableau Desktop with proper geographic filtering.
+
+---
+
+## Question 46
+**Scenario:** Oliver is creating a heatmap showing employee performance across different metrics. Some metrics are "higher is better" (sales) while others are "lower is better" (complaint rate). How should he normalize and color the heatmap consistently?
+
+**Options:**
+1. Use different color palettes for each metric type
+2. Create a calculated field that inverts lower-is-better metrics, then use percentile ranking for colors
+3. Use dual-axis with different colors
+4. Apply color to each metric separately without normalization
+
+**Answer:** Option 2 - Create a calculated field that inverts lower-is-better metrics, then use percentile ranking for colors
+
+**Explanation:** Oliver should create a calculated field that standardizes all metrics to "higher is better": IF [Metric] IN ("Complaint Rate", "Error Rate") THEN 1/[Value] ELSE [Value] END. Then create a percentile rank: PERCENTILE([Normalized Value], [Value]) by employee. Apply a consistent color palette (e.g., red for low percentiles, green for high) to this percentile field. This ensures all cells use the same color logic where green always means "good performance."
+
+---
+
+## Question 47
+**Scenario:** Emma's dashboard shows regional sales, and she wants users to be able to select multiple regions using checkboxes rather than a standard filter dropdown. How should she implement this?
+
+**Options:**
+1. Use a Parameter with multiple values
+2. Create a Parameter with Show/Hide functionality
+3. Use a Parameter with a Set action
+4. Parameters don't support multiple selections; use a filter instead
+
+**Answer:** Option 4 - Parameters don't support multiple selections; use a filter instead
+
+**Explanation:** Tableau Parameters only allow single value selection. For multiple selections, Emma should use the standard filter control but format it as "Multiple Values (dropdown)" or "Multiple Values (list)" which displays checkboxes. If she needs more custom styling, she could create a workaround using a separate sheet with Region names as marks, where clicking marks updates a Set that filters the dashboard, but the standard filter control is simpler and sufficient.
+
+---
+
+## Question 48
+**Scenario:** Noah has created an executive dashboard that shows different KPIs. His manager wants the ability to export just one specific chart to PowerPoint, not the entire dashboard. How can he enable this?
+
+**Options:**
+1. Create a separate dashboard for each chart
+2. Use the Worksheet export functionality
+3. Add a Download button using Dashboard Extension
+4. Users can right-click any chart and export to PowerPoint
+
+**Answer:** Option 4 - Users can right-click any chart and export to PowerPoint
+
+**Explanation:** Tableau allows exporting individual sheets from a dashboard. Users can hover over any visualization in the dashboard, click the More Options menu (three dots or dropdown arrow in the upper right corner of the sheet), and select "Export" > "PowerPoint" (or Image, Data, Crosstab, etc.). This exports only that specific chart, not the entire dashboard. No special configuration is needed from Noah.
+
+---
+
+## Question 49
+**Scenario:** Mia has a complex calculation that needs to check if a customer's purchase amount is above the 75th percentile for their region. She wants this to work regardless of what dimensions are in the view. Which approach should she use?
+
+**Options:**
+1. Use {FIXED [Region] : PERCENTILE([Purchase Amount], 0.75)}
+2. Use {INCLUDE [Region] : PERCENTILE([Purchase Amount], 0.75)}
+3. Use WINDOW_PERCENTILE(SUM([Purchase Amount]), 0.75) with compute using Region
+4. Create a reference line at 75th percentile
+
+**Answer:** Option 1 - Use {FIXED [Region] : PERCENTILE([Purchase Amount], 0.75)}
+
+**Explanation:** The FIXED LOD expression is the correct choice because it computes at the Region level regardless of other dimensions in the view. The calculation would be: IF [Purchase Amount] > {FIXED [Region] : PERCENTILE([Purchase Amount], 0.75)} THEN "Above" ELSE "Below" END. This remains consistent whether the view shows customers, products, dates, or any other dimension, always comparing to the regional 75th percentile.
+
+---
+
+## Question 50
+**Scenario:** Liam has built a dashboard that performs slowly because it contains many complex calculations and large datasets. Users complain about load times. What optimization should he prioritize first?
+
+**Options:**
+1. Convert live connection to extract
+2. Reduce the number of marks displayed
+3. Simplify calculated fields
+4. Add more context filters
+
+**Answer:** Option 1 - Convert live connection to extract
+
+**Explanation:** Converting from a live connection to an extract typically provides the most significant performance improvement. Extracts are optimized for Tableau's data engine, pre-aggregate data, and don't require querying the source database for each interaction. After creating an extract, Liam should: (1) Hide unused fields, (2) Apply extract filters to reduce data volume, (3) Aggregate data to appropriate granularity, and (4) Schedule regular extract refreshes. Other optimizations (options 2-4) should be implemented subsequently if needed.
+
+---
+
+## End of Questions (36-50)
+
+**Summary of Topics Covered in Questions 36-50:**
+- Data Preparation and Disaggregation (Q36)
+- Sheet Swapping and Navigation (Q37)
+- Dynamic Watermarks (Q38)
+- Market Basket Analysis (Q39)
+- Time Binning (Q40)
+- Parameter-based Dynamic Filtering (Q41)
+- Manual Sorting for Ordinal Data (Q42)
+- User Experience Design (Q43)
+- Table Calculations Limitations (Q44)
+- Spatial Joins and Geocoding (Q45)
+- Performance Normalization (Q46)
+- Filter Types and Limitations (Q47)
+- Individual Chart Exports (Q48)
+- LOD Expressions for Percentiles (Q49)
+- Performance Optimization (Q50)
