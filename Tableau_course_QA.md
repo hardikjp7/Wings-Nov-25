@@ -1,26 +1,18 @@
-# Informatica and Tableau Quiz - Questions and Answers
-
 ## Question No. 1
 
-You are trying to create multiple lookups in which one of them is add name in Informatica session. You do not want the add_name to return multiple rows for a single search:
-a) Which of the following will you use properties can you override after the declaration in the above session?
-b) which of the following
+You are trying to create multiple lookups in which one of them is add name in Informatica session. You do not want the add\_name to return multiple rows for a single search: a) Which of the following will you use properties can you override after the declaration in the above session?
 
-**Options:**
+? b) which of the folioweg
 
-A. a) use a cached map item value for the lookup
-b) Bulk loading map
+a) use a cached map item value for the lockup; b) Bulk loading map
 
-B. a) Use a cached dynamic lookup
-b) Target table name
+a) Use a cached dynamic lookup; b) Target table name
 
-C. a) use a workflow of the single lookup field
-b) Target properties
+a) use a workflow of the single lookup field; b) Target properties
 
-D. a) update an empty record in the lookup to block multiple searches
-b) Target db connection
+a) update an empty record in the lookup to block multiple searches; b) Target db connection
 
-**Correct Answer: B** - Use a cached dynamic lookup to prevent multiple rows from being returned, and Target table name can be overridden.
+**Correct Answer:** a) **Use a cached dynamic lookup**; b) **Target table name**
 
 ---
 
@@ -28,17 +20,15 @@ b) Target db connection
 
 Which of the following view uses the text tables to display the numbers associated with dimension members?
 
-**Options:**
+Crosstab
 
-A. Crosstab
+Dashboard
 
-B. Dashboard
+Calculated field
 
-C. Calculated field
+Data Pane
 
-D. Data Pane
-
-**Correct Answer: A** - Crosstab view uses text tables to display numbers associated with dimension members.
+**Correct Answer:** **Crosstab**
 
 ---
 
@@ -46,17 +36,15 @@ D. Data Pane
 
 A developer working on filters wants to limit the result set from a filter. Which of the following filters can he use for this?
 
-**Options:**
+Top filter
 
-A. Top filter
+Multiple values filter
 
-B. Multiple values filter
+Single value filter
 
-C. Single value filter
+Wildcard match filter
 
-D. Wildcard match filter
-
-**Correct Answer: A** - Top filter is used to limit the result set to top N values.
+**Correct Answer:** **Top filter**
 
 ---
 
@@ -64,17 +52,15 @@ D. Wildcard match filter
 
 In which of the following types of filters, a filter condition is applied first to the data source, and then some other filters are used only for the resulting records?
 
-**Options:**
+Quick filter
 
-A. Quick filter
+Action filter
 
-B. Action filter
+Context filter
 
-C. Context filter
+Dimension filter
 
-D. Dimension filter
-
-**Correct Answer: C** - Context filter is applied first to the data source, creating a temporary table, and then other filters are applied.
+**Correct Answer:** **Context filter**
 
 ---
 
@@ -82,17 +68,15 @@ D. Dimension filter
 
 You are creating a Tableau report and need to use either an extract or a live connection. What is the best option available to choose an extract over a live connection?
 
-**Options:**
+You need the latest possible data at all times.
 
-A. You need the latest possible data at all times.
+You need the data source to be only supported by a live connection via ODBC
 
-B. You need the data source to be only supported by a live connection via ODBC
+You need to join the tables that are in the data source.
 
-C. You need to join the tables that are in the data source.
+You need to apply an aggregation that takes too long when using a live connection.
 
-D. You need to apply an aggregation that takes too long when using a live connection.
-
-**Correct Answer: D** - You need to apply an aggregation that takes too long when using a live connection. Extracts improve performance for complex aggregations.
+**Correct Answer:** **You need to apply an aggregation that takes too long when using a live connection.**
 
 ---
 
@@ -100,17 +84,15 @@ D. You need to apply an aggregation that takes too long when using a live connec
 
 Carla has been working on data aggregation on a Tableau project for which she needs to implement the table calculations. Which of the following options correctly defines the calculations?
 
-**Options:**
+Calculations are functions that can be used to send SQL expressions directly to the database
 
-A. Calculations are functions that can be used to send SQL expressions directly to the database
+Calculations are functions that allow you to perform computations on values in a table
 
-B. Calculations are functions that allow you to perform computations on values in a table
+Calculations are functions that allow you to pass data directly to a running external service instance
 
-C. Calculations are functions that allow you to pass data directly to a running external service instance
+Calculations are functions that can specify, include, or omit dimensions from the current view.
 
-D. Calculations are functions that can specify, include, or omit dimensions from the current view.
-
-**Correct Answer: B** - Calculations are functions that allow you to perform computations on values in a table.
+**Correct Answer:** **Calculations are functions that allow you to perform computations on values in a table**
 
 ---
 
@@ -118,17 +100,15 @@ D. Calculations are functions that can specify, include, or omit dimensions from
 
 The table contains the data of people who prefer tea over coffee and availability of tea and coffee. Which of the following options is the best visualization to find the relation between these two parameters?
 
-**Options:**
+Histogram
 
-A. Histogram
+Scatter Plot
 
-B. Scatter Plot
+Bar Chart
 
-C. Bar Chart
+Density Map
 
-D. Density Map
-
-**Correct Answer: B** - Scatter Plot is best for finding relationships/correlations between two parameters.
+**Correct Answer:** **Scatter Plot**
 
 ---
 
@@ -136,17 +116,15 @@ D. Density Map
 
 A developer wants to sort a graph with more than one dimension without using the combined field. Which of the following tools can she use in this case?
 
-**Options:**
+Dynamic sort option
 
-A. Dynamic sort option
+Nested sort option
 
-B. Nested sort option
+Multiple sort option
 
-C. Multiple sort option
+Negative sort option
 
-D. Negative sort option
-
-**Correct Answer: B** - Nested sort option allows sorting on multiple dimensions hierarchically.
+**Correct Answer:** **Nested sort option**
 
 ---
 
@@ -154,17 +132,15 @@ D. Negative sort option
 
 You have data on expired medicine from the years 2001 to 2020 of all products in pharmaceutical companies. You have to calculate the average amount of expired medicine between the years 2010 and 2015. Which of the following options can be used for this?
 
-**Options:**
+RUNNING\_COUNT(SUM([Expired\_Amount]))
 
-A. RUNNING_COUNT(SUM([Expired_Amount]))
+RUNNING\_AVG(SUM([Expired\_Amount]))
 
-B. RUNNING_AVG(SUM([Expired_Amount]))
+AVG(SUM([Expired\_Amount]))
 
-C. AVG(SUM([Expired_Amount]))
+RUNNING\_SUM(SUM([Expired\_Amount]))
 
-D. RUNNING_SUM(SUM([Expired_Amount]))
-
-**Correct Answer: C** - AVG(SUM([Expired_Amount])) calculates the average of aggregated values.
+**Correct Answer:** **AVG(SUM([Expired\_Amount]))**
 
 ---
 
@@ -172,17 +148,15 @@ D. RUNNING_SUM(SUM([Expired_Amount]))
 
 What is the role of "Tableau Server" in a Tableau deployment?
 
-**Options:**
+To develop and design dashboards and visualizations
 
-A. To develop and design dashboards and visualizations
+To automate data refreshes at regular intervals
 
-B. To automate data refreshes at regular intervals
+To share and collaborate on Tableau workbooks and dashboards within an organization
 
-C. To share and collaborate on Tableau workbooks and dashboards within an organization
+To connect to external data sources for data visualization
 
-D. To connect to external data sources for data visualization
-
-**Correct Answer: C** - To share and collaborate on Tableau workbooks and dashboards within an organization.
+**Correct Answer:** **To share and collaborate on Tableau workbooks and dashboards within an organization**
 
 ---
 
@@ -190,17 +164,15 @@ D. To connect to external data sources for data visualization
 
 Sarah, a developer, requires a chart used to visualize the matrix value graphically using colors. What of the following can she use for this?
 
-**Options:**
+Tree Map
 
-A. Tree Map
+Histogram
 
-B. Histogram
+Heat Map
 
-C. Heat Map
+Pie Chart
 
-D. Pie Chart
-
-**Correct Answer: C** - Heat Map is used to visualize matrix values graphically using colors.
+**Correct Answer:** **Heat Map**
 
 ---
 
@@ -208,53 +180,47 @@ D. Pie Chart
 
 You need to compute values using specified dimensions in addition to whatever dimensions are present in the view. Which of the following options can you use to accomplish the task?
 
-**Options:**
+FIXED LOD
 
-A. FIXED LOD
+CUSTOM LOD
 
-B. CUSTOM LOD
+INCLUDE LOD
 
-C. INCLUDE LOD
+EXCLUDE LOD
 
-D. EXCLUDE LOD
-
-**Correct Answer: C** - INCLUDE LOD computes values using specified dimensions in addition to those in the view.
+**Correct Answer:** **INCLUDE LOD**
 
 ---
 
 ## Question No. 13
 
-If you are using a live connection, Tableau automatically selects the option "Auto Update Worksheet". Choose the correct option that will disable this feature.
+If you are using a live connection, Tableau automatically selects the option "Auto Update Worksheet" Choose the correct option that will disable this feature
 
-**Options:**
+Analysis -> Deselect the "Auto Update Worksheet" option
 
-A. Analysis -> Deselect the "Auto Update Worksheet" option
+Dashboard --> Auto Updates -> Deselect the "Auto Update Worksheet" option
 
-B. Dashboard --> Auto Updates -> Deselect the "Auto Update Worksheet" option
+Worksheet -> Auto Updates -> Deselect the "Auto Update Worksheet" option
 
-C. Worksheet -> Auto Updates -> Deselect the "Auto Update Worksheet" option
+Formal -> Auto Updates -> Deselect the "Auto Update Worksheet" option
 
-D. Format -> Auto Updates -> Deselect the "Auto Update Worksheet" option
-
-**Correct Answer: C** - Worksheet -> Auto Updates -> Deselect the "Auto Update Worksheet" option.
+**Correct Answer:** **Analysis -> Deselect the "Auto Update Worksheet" option**
 
 ---
 
 ## Question No. 14
 
-A company has no sales, so they implement the following function. What will be the output of this code? ZN(SUM([SALES]))
+A company has no sales, so they implement the following function. What will be the output of this code? $\text{ZN}(\text{SUM}([\text{SALES}]))$
 
-**Options:**
+Null
 
-A. Null
+0
 
-B. 0
+It will throw an error
 
-C. It will throw an error
+-1
 
-D. -1
-
-**Correct Answer: B** - 0. The ZN function returns 0 if the expression is NULL.
+**Correct Answer:** **0**
 
 ---
 
@@ -262,35 +228,31 @@ D. -1
 
 A developer working on Tableau wants to use a file containing the details of a workbook. Which of the following options would help him use the required file?
 
-**Options:**
+Tableau workbook
 
-A. Tableau workbook
+Tableau packaged workbook
 
-B. Tableau packaged workbook
+Tableau data source
 
-C. Tableau data source
+Tableau packaged data source
 
-D. Tableau packaged data source
-
-**Correct Answer: B** - Tableau packaged workbook (.twbx) contains the workbook along with all supporting files.
+**Correct Answer:** **Tableau workbook**
 
 ---
 
 ## Question No. 16
 
-While going through the code for a Tableau project, you found the following code snippet. What will be the output of this code snippet? FLOOR(CEILING(3.456))
+While going through the code for a Tableau project, you found the following code snippet What will be the output of this code snippet? $\text{FLOOR} (\text{CEILING}(3.456))$
 
-**Options:**
+4
 
-A. 4
+3
 
-B. 3
+3.5
 
-C. 3.5
+Syntax error
 
-D. Syntax error
-
-**Correct Answer: A** - 4. CEILING(3.456) = 4, then FLOOR(4) = 4.
+**Correct Answer:** **4**
 
 ---
 
@@ -298,17 +260,15 @@ D. Syntax error
 
 You've been assigned the responsibility of optimizing the performance of a data warehouse system, specifically one that deals with complex analytical queries. This system often encounters lengthy processing times when handling these intricate queries. For this, you decide to use a technique that involves breaking down a query into smaller tasks that can be executed simultaneously across multiple CPU cores. Which technique should you employ to improve processing speed and efficiency in this scenario?
 
-**Options:**
+Data SDifficulting
 
-A. Data Sharding
+Indexing
 
-B. Indexing
+Parallel Processing
 
-C. Parallel Processing
+Materialized Views
 
-D. Materialized Views
-
-**Correct Answer: C** - Parallel Processing allows breaking down queries into smaller tasks executed simultaneously across multiple CPU cores.
+**Correct Answer:** **Parallel Processing**
 
 ---
 
@@ -316,17 +276,15 @@ D. Materialized Views
 
 Penny, a developer, wants to display the progress of the value of a task or resource over a period. Which of the following charts should she use for this?
 
-**Options:**
+Bubble Chart
 
-A. Bubble Chart
+Bullet Chart
 
-B. Bullet Chart
+Crosstab Chart
 
-C. Crosstab Chart
+Gantt Chart
 
-D. Gantt Chart
-
-**Correct Answer: D** - Gantt Chart displays progress of tasks/resources over a period of time.
+**Correct Answer:** **Gantt Chart**
 
 ---
 
@@ -334,17 +292,15 @@ D. Gantt Chart
 
 A developer wants to display the cumulative effect of sequential positive and negative values. Which of the following charts should he use for this?
 
-**Options:**
+Bullet Chart
 
-A. Bullet Chart
+Crosstab Chart
 
-B. Crosstab Chart
+Gantt Chart
 
-C. Gantt Chart
+Waterfall Charts
 
-D. Waterfall Charts
-
-**Correct Answer: D** - Waterfall Charts display the cumulative effect of sequential positive and negative values.
+**Correct Answer:** **Waterfall Charts**
 
 ---
 
@@ -352,17 +308,15 @@ D. Waterfall Charts
 
 As a cloud developer, Richie is implementing different types of date sets for a project. Which of the following options does not demonstrate a discrete date set?
 
-**Options:**
+Days in a week
 
-A. Days in a week
+Different days in a week
 
-B. Different days in a week
+Different months
 
-C. Different months
+Same months in different years
 
-D. Same months in different years
-
-**Correct Answer: D** - Same months in different years represents a continuous date set, not discrete.
+**Correct Answer:** **Same months in different years**
 
 ---
 
@@ -370,17 +324,15 @@ D. Same months in different years
 
 As a site developer, Caroline is working on a project report for which she needs to use the bullet graph. For which of the following options can you use a bullet graph?
 
-**Options:**
+Analyzing the trend for a time period
 
-A. Analyzing the trend for a time period
+Comparing the actual against the target sales
 
-B. Comparing the actual against the target sales
+Adding data to bins and calculating count measures
 
-C. Adding data to bins and calculating count measures
+Displaying the sales growth for a particular year.
 
-D. Displaying the sales growth for a particular year.
-
-**Correct Answer: B** - Comparing the actual against the target sales. Bullet graphs are designed for performance comparison against targets.
+**Correct Answer:** **Comparing the actual against the target sales**
 
 ---
 
@@ -388,17 +340,15 @@ D. Displaying the sales growth for a particular year.
 
 You are working on a report, and it requires performing the blending process. Which type of join should you use to achieve the desired results?
 
-**Options:**
+Right Join
 
-A. Right Join
+Left Join
 
-B. Left Join
+Full Join
 
-C. Full Join
+Inner Join
 
-D. Inner Join
-
-**Correct Answer: B** - Left Join. Data blending in Tableau uses left join by default.
+**Correct Answer:** **Left Join**
 
 ---
 
@@ -406,17 +356,15 @@ D. Inner Join
 
 What is the purpose of the "Show Me Pane" in Tableau?
 
-**Options:**
+To display a list of available data sources
 
-A. To display a list of available data sources
+To suggest appropriate visualization types based on the selected data fields
 
-B. To suggest appropriate visualization types based on the selected data fields
+To create calculated fields using predefined formulas
 
-C. To create calculated fields using predefined formulas
+To export visualizations to other formats such as PDF or image files
 
-D. To export visualizations to other formats such as PDF or image files
-
-**Correct Answer: B** - To suggest appropriate visualization types based on the selected data fields.
+**Correct Answer:** **To suggest appropriate visualization types based on the selected data fields**
 
 ---
 
@@ -424,35 +372,31 @@ D. To export visualizations to other formats such as PDF or image files
 
 In Tableau, what is the purpose of a "calculated field"?
 
-**Options:**
+To filter data based on specific criteria
 
-A. To filter data based on specific criteria
+To perform mathematical operations on existing data fields
 
-B. To perform mathematical operations on existing data fields
+To create hierarchies within the data structure
 
-C. To create hierarchies within the data structure
+To visualize geographical data on maps
 
-D. To visualize geographical data on maps
-
-**Correct Answer: B** - To perform mathematical operations on existing data fields.
+**Correct Answer:** **To perform mathematical operations on existing data fields**
 
 ---
 
 ## Question No. 25
 
-What is a frequently used technique in data visualization that involves adding a little purposeful noise to the image to avoid overlapping and to preserve the integrity of what is communicated known as?
+What is a frequently used technique in data visualization that involves adding a little purposeful noise to the image to avoid overlapping and to preserve the integrity of what is communicated known as
 
-**Options:**
+Blending
 
-A. Blending
+Joining
 
-B. Joining
+Jittering
 
-C. Jittering
+Filtering
 
-D. Filtering
-
-**Correct Answer: C** - Jittering adds small random noise to data points to avoid overlapping in visualizations.
+**Correct Answer:** **Jittering**
 
 ---
 
@@ -460,89 +404,79 @@ D. Filtering
 
 What will be the best visualization to compare the profit of different products manufactured by your company?
 
-**Options:**
+Histogram
 
-A. Histogram
+Scatter Plot
 
-B. Scatter Plot
+Bar Chart
 
-C. Bar Chart
+Density Map
 
-D. Density Map
-
-**Correct Answer: C** - Bar Chart is best for comparing categorical data like profit across different products.
+**Correct Answer:** **Bar Chart**
 
 ---
 
 ## Question No. 27
 
-What will be the output of the following code snippet? FINDNTH("multiplication", "i", 2)
+What will be the output of the following code snippet? $\text{FINDNTH}("multiplication", "i", 2)$
 
-**Options:**
+2
 
-A. 2
+8
 
-B. 8
+4
 
-C. 4
+0
 
-D. 0
-
-**Correct Answer: B** - 8. FINDNTH finds the position of the nth occurrence of a substring. The second "i" in "multiplication" is at position 8.
+**Correct Answer:** **8** (The 2nd occurrence of 'i' is the 8th character)
 
 ---
 
 ## Question No. 28
 
-You have been working on a project and need to specify dimensions to exclude from the view level of detail. Which of the following options will be helpful in this scenario?
+You have been working on a project and need to specify dimensions to exclude from the view level of detail Which of the following options will be helpful in this scenario
 
-**Options:**
+FIXED LOD
 
-A. FIXED LOD
+CUSTOM LOD
 
-B. CUSTOM LOD
+INCLUDE LOD
 
-C. INCLUDE LOD
+EXCLUDE LOD
 
-D. EXCLUDE LOD
-
-**Correct Answer: D** - EXCLUDE LOD is used to specify dimensions to exclude from the view level of detail.
+**Correct Answer:** **EXCLUDE LOD**
 
 ---
 
 ## Question No. 29
 
-A data analyst has to complete a project in 4 months. He divided his project into multiple tasks and wanted to schedule his tasks. Which of the following is the best visualization suited to solve the problem?
+A data analyst has to complete a project in 4 months. He divided his project into multiple tasks and wanted to schedule his tasks Which of the following is the best visualization suited to solve the problem?
 
-**Options:**
+Bullet Chart
 
-A. Bullet Chart
+Heat Map
 
-B. Heat Map
+Gantt Chart
 
-C. Gantt Chart
+Bar Graph
 
-D. Bar Graph
-
-**Correct Answer: C** - Gantt Chart is ideal for task scheduling and project timeline visualization.
+**Correct Answer:** **Gantt Chart**
 
 ---
 
 ## Question No. 30
 
-Jennifer wants to open a URL within a dashboard rather than opening the system's web browser. Is it possible to deploy a URL action on a dashboard?
+Jennifer wants to open a URL within a dashboard rather than opening the system's web browser Is it possible to deploy a URL action on a dashboard?
 
-**Options:**
+Yes, using the Tableau server
 
-A. Yes, using the Tableau server
+Yes, using a Tableau object.
 
-B. Yes, using a Tableau object.
+Yes, using a Web Page object
 
-C. Yes, using a Web Page object
+Yes, it requires a plugin
 
-D. Yes, it requires a plugin
-
-**Correct Answer: C** - Yes, using a Web Page object. This allows embedding web content directly in the dashboard.
+**Correct Answer:** **Yes, using a Web Page object**
 
 ---
 
@@ -550,35 +484,31 @@ D. Yes, it requires a plugin
 
 You are working on a project and are required to display measures over a period of time. Which of the following options would you use for this task?
 
-**Options:**
+Line Chart
 
-A. Line Chart
+Bar Chart
 
-B. Bar Chart
+Histogram
 
-C. Histogram
+Scatter Plot
 
-D. Scatter Plot
-
-**Correct Answer: A** - Line Chart is ideal for displaying measures over a period of time (trends).
+**Correct Answer:** **Line Chart**
 
 ---
 
 ## Question No. 32
 
-You're tasked with designing a data warehouse for a multinational retail corporation. The corporation manages a diverse range of products across different categories, and it requires a data model that allows for flexible reporting and analysis. Which data modeling approach would you recommend, and why?
+You're tasked with designing a data warehouse for a multinational retail corporation. The corporation manages a diverse range of products across different categories, and it requires a data model that allows for flexible reporting and analysis Which data modeling approach would you recommend, and why?
 
-**Options:**
+Implement a Dimensional Modeling approach with a Star Schema Use dimension tables for product attributes like category, brand, and location, and a central fact table for sales transactions. This approach provides easy querying and flexibility for reporting.
 
-A. Implement a Dimensional Modeling approach with a Star Schema. Use dimension tables for product attributes like category, brand, and location, and a central fact table for sales transactions. This approach provides easy querying and flexibility for reporting.
+Adopt a Snowflake Schema for better normalization. Break down dimension tables into sub-dimensions for more granular reporting. Utilize multiple fact tables to capture different aspects of sales transactions. This approach offers more detailed reporting capabilities
 
-B. Adopt a Snowflake Schema for better normalization. Break down dimension tables into sub-dimensions for more granular reporting. Utilize multiple fact tables to capture different aspects of sales transactions. This approach offers more detailed reporting capabilities.
+Utilize a NoSQL data model for improved scalability and flexibility Design document-based collections to represent products, categories, and sales transactions. Leverage document databases like MongoDB for storing and querying the data. This approach provides flexibility for evolving product structures
 
-C. Utilize a NoSQL data model for improved scalability and flexibility. Design document-based collections to represent products, categories, and sales transactions. Leverage document databases like MongoDB for storing and querying the data. This approach provides flexibility for evolving product structures.
+Implement a Graph Data Model to represent the relationships between products, categories, and sales transactions. Utilize a graph database like Neo4j to store and traverse these relationships This approach is beneficial for analyzing complex interdependencies
 
-D. Implement a Graph Data Model to represent the relationships between products, categories, and sales transactions. Utilize a graph database like Neo4j to store and traverse these relationships. This approach is beneficial for analyzing complex interdependencies.
-
-**Correct Answer: A** - Implement a Dimensional Modeling approach with a Star Schema. This is the standard approach for data warehousing, providing optimal query performance and flexibility for reporting.
+**Correct Answer:** **Implement a Dimensional Modeling approach with a Star Schema Use dimension tables for product attributes like category, brand, and location, and a central fact table for sales transactions. This approach provides easy querying and flexibility for reporting.**
 
 ---
 
@@ -586,17 +516,15 @@ D. Implement a Graph Data Model to represent the relationships between products,
 
 Which of the following visualizations is the least appropriate for categorical data?
 
-**Options:**
+Line chart
 
-A. Line chart
+Pie chart
 
-B. Pie chart
+Bar chart
 
-C. Bar chart
+Combo chart
 
-D. Combo chart
-
-**Correct Answer: A** - Line chart is least appropriate for categorical data as it's designed for continuous data trends over time.
+**Correct Answer:** **Line chart**
 
 ---
 
@@ -604,35 +532,31 @@ D. Combo chart
 
 You are given the data of students that contains many tables under one schema. Which feature will help you extract the information from the tables?
 
-**Options:**
+Union
 
-A. Union
+Key-column pair
 
-B. Key-column pair
+Groups
 
-C. Groups
+Tasks
 
-D. Tasks
-
-**Correct Answer: A** - Union helps combine data from multiple tables with similar structure.
+**Correct Answer:** **Union**
 
 ---
 
 ## Question No. 35
 
-You created a column chart with the product name and price and got a chart with the same color for all the columns. Which of the following steps should you follow to assign one color for each column?
+You created a column chart with the product name and price and got a chart with the same color for all the columns, Which of the following steps should you follow to assign one color for each column?
 
-**Options:**
+Drag and drop the price in the color marks card and change the measure to continuous
 
-A. Drag and drop the price in the color marks card and change the measure to continuous
+Drag and drop the price in the color marks card and change the measure to discrete.
 
-B. Drag and drop the price in the color marks card and change the measure to discrete.
+Drag and drop the price into colors.
 
-C. Drag and drop the price into colors.
+Drag and drop the product name into colors.
 
-D. Drag and drop the product name into colors.
-
-**Correct Answer: D** - Drag and drop the product name into colors. This assigns a unique color to each product category.
+**Correct Answer:** **Drag and drop the product name into colors.**
 
 ---
 
@@ -640,35 +564,31 @@ D. Drag and drop the product name into colors.
 
 Identify the file present in the bookmarks folder in the Tableau repository that contains a single worksheet.
 
-**Options:**
+.tbm
 
-A. .tbm
+.tm
 
-B. .tm
+.tb
 
-C. .tb
+.tk
 
-D. .tk
-
-**Correct Answer: A** - .tbm (Tableau Bookmark) file contains a single worksheet.
+**Correct Answer:** **.tbm**
 
 ---
 
 ## Question No. 37
 
-Paulie wants to use a file format containing the data used in a twb file in a highly compressed columnar data format. Identify the file format that can be used for this.
+Paulie wants to use a file format containing the data used in a .twb file in a highly compressed columnar data format. Identify the file format that can be used for this
 
-**Options:**
+Tableau data extract
 
-A. Tableau data extract
+Tableau data source
 
-B. Tableau data source
+Tableau packaged workbook
 
-C. Tableau packaged workbook
+Tableau workbook
 
-D. Tableau workbook
-
-**Correct Answer: A** - Tableau data extract (.tde or .hyper) uses highly compressed columnar data format.
+**Correct Answer:** **Tableau data extract**
 
 ---
 
@@ -676,55 +596,44 @@ D. Tableau workbook
 
 Harry has implemented the filtering of data in a Tableau project. Which of the following options is not a type of filter in Tableau?
 
-**Options:**
+Custom
 
-A. Custom
+Context
 
-B. Context
+Normal
 
-C. Normal
+Highlight
 
-D. Highlight
-
-**Correct Answer: C** - Normal is not a type of filter in Tableau. The main filter types are Extract, Data Source, Context, Dimension, Measure, and Table Calculation filters.
+**Correct Answer:** **Highlight**
 
 ---
 
 ## Question No. 39
 
-You want to create a flexible dashboard that includes three bar charts given below. You want to select a particular department in your dashboard and have the other two sheets adjust to only view values for that department.
-1. Amount by department
-2. Amount by category
-3. Quantity by category
+You want to create a flexible dashboard that includes three bar charts given below You want to select a particular department in your dashboard and have the other two sheets adjust to only view values for that department. 1. Amount by department; 2. Amount by category; 3. Quantity by category. Which of the following features will you use for such a requirement?
 
-Which of the following features will you use for such a requirement?
+Filters
 
-**Options:**
+Parameters
 
-A. Filters
+Sets
 
-B. Parameters
+Groups
 
-C. Sets
-
-D. Groups
-
-**Correct Answer: A** - Filters, specifically using filter actions in dashboards, allow interactive filtering across multiple sheets.
+**Correct Answer:** **Filters** (Specifically, using a filter as an Action or applying a filter across all related worksheets)
 
 ---
 
 ## Question No. 40
 
-Four functionalities of RANK_DENSE in Tableau are provided in the options. Which of them is the correct option?
+Four functionalities of $\text{RANK\_DENSE}$ in Tableau are provided in the options. Which of them is the correct option?
 
-**Options:**
+It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (3, 2, 2, 1).
 
-A. It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (3, 2, 2, 1).
+It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (0.25, 0.75, 0.75, 1.00).
 
-B. It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (0.25, 0.75, 0.75, 1.00).
+It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (4, 2, 3, 1)
 
-C. It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (4, 2, 3, 1).
+It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (4, 3, 3, 1)
 
-D. It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (4, 3, 3, 1).
-
-**Correct Answer: A** - RANK_DENSE ranks values (6, 9, 9, 14) as (3, 2, 2, 1) in descending order, with no gaps for tied values.githu
+**Correct Answer:** **It returns the rank for the current row in the partition. With this function, the set of values (6, 9, 9, 14) would be ranked (4, 3, 3, 1)** (Assuming a descending rank where 14 is the highest value/rank 1, but $\text{RANK\_DENSE}$ ensures no gaps in rank numbers).
